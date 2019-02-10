@@ -73,3 +73,27 @@ freq_Dist.items()
 freq_Dist.max()
 
 freq_Dist[3]
+
+
+# Conditionals
+[w for w in Mauryan_text if len(w) > 4]
+sorted([w for w in set(Mauryan_text) if w.endswith('yan')])
+sorted([term for term in set(Mauryan_text) if 'ury' in term])
+sorted([item for item in set(Mauryan_text) if item.istitle()])
+sorted([item for item in set(Mauryan_text) if item.isdigit()])
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
