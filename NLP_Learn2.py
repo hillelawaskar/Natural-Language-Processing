@@ -84,6 +84,12 @@ sorted([item for item in set(Mauryan_text) if item.isdigit()])
 
 
 
+## Cleaning the text for alpha words , generally done for unique words ; but words like "why?" will be ignored :)
+len(Mauryan_text)
+len(set(Mauryan_text))
+len(set([word.lower() for word in Mauryan_text]))
+len(set([word.lower() for word in Mauryan_text if word.isalpha()])) 
+
 
 
 
