@@ -3,6 +3,8 @@
 Created on Wed Feb 13 08:01:42 2019
 
 @author: Irene
+C:\Users\Irene\AppData\Roaming\nltk_data\corpora\reuters.zip\reuters
+
 """
 
 import nltk
@@ -73,6 +75,8 @@ genres = ['news', 'religion', 'hobbies', 'science_fiction', 'romance', 'humor']
 modals = ['can', 'could', 'may', 'might', 'must', 'will'] 
 cfd.tabulate(conditions=genres, samples=modals)
 
+cfd.items()
+
 #                  can could   may might  must  will 
 #           news    93    86    66    38    50   389 
 #       religion    82    59    78    12    54    71 
@@ -82,7 +86,24 @@ cfd.tabulate(conditions=genres, samples=modals)
 #          humor    16    30     8     8     9    13 
 
 
+from nltk.corpus import reuters 
 
+reuters.fileids()
+
+reuters.categories()
+
+
+reuters.categories('training/9865')
+reuters.fileids('barley')
+reuters.fileids(['barley', 'corn'])
+reuters.words('training/9865')[:14]
+reuters.words(['training/9865', 'training/9880'])
+reuters.words(categories='barley')
+reuters.words(categories=['barley', 'corn'])
+
+
+### Inaugral Corpous
+from nltk.corpus import inaugural
 
 
 
