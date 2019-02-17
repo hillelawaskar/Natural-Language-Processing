@@ -94,6 +94,14 @@ len(set([word.lower() for word in Mauryan_text if word.isalpha()]))
 
 
 
+for token in Mauryan_text:
+    if token.islower():
+        print (token, 'is a lowercase word')
+    elif token.istitle():
+        print (token, 'is a titlecase word')
+    else:
+        print (token, 'is punctuations')
+
 
 
 
