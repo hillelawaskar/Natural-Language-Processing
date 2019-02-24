@@ -6,8 +6,9 @@ Created on Sun Feb 10 20:15:26 2019
 """
 from __future__ import division
 import nltk
+from nltk.corpus import stopwords
 
-
+stop_words = set(stopwords.words('english')) 
 
 ## the text is scrapped and collected from WikiPedia 
 Mauryan = open('D:\Data\CodePython\DataAI\Config\\Mauryanempire.txt', 'r',encoding="utf-8")
@@ -49,7 +50,7 @@ percentage(Mauryan_text.count('history'), len(Mauryan_text))
 
 Mauryan_text[2000:2005]
 
-WordFreq = FreqDist(Mauryan_text) 
+WordFreq = nltk.FreqDist(Mauryan_text) 
 
 WordFreq
 Vocabolary = WordFreq.keys()
@@ -89,6 +90,17 @@ len(Mauryan_text)
 len(set(Mauryan_text))
 len(set([word.lower() for word in Mauryan_text]))
 len(set([word.lower() for word in Mauryan_text if word.isalpha()])) 
+
+
+
+#### ckeaning text with stop words and the creating cummulative freq dist plot
+clean_text = [word.lower() for word in Mauryan_text if word.isalpha()]
+filtered_sentence = [w for w in clean_text if not w in stop_words] 
+stop_more = ("also","bce")
+filtered_sentence1 = [w for w in filtered_sentence if not w in stop_more] 
+WordFreq = nltk.FreqDist(filtered_sentence1) 
+WordFreq.plot(10 , cumulative = True)
+len(filtered_sentence1)
 
 
 
