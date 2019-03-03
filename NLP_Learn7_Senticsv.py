@@ -5,27 +5,23 @@ Created on Sun Mar  3 00:01:08 2019
 @author: Irene
 """
 
-# This Python 3 environment comes with many helpful analytics libraries installed
-# It is defined by the kaggle/python docker image: https://github.com/kaggle/docker-python
-# For example, here's several helpful packages to load in 
-
 # import all packages
-import numpy as np
-from nltk.tokenize import RegexpTokenizer
+#import numpy as np
+#from nltk.tokenize import RegexpTokenizer
 from nltk.corpus import stopwords
 import unicodedata
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
-import random
+#import random
 from sklearn.metrics import f1_score
-import pickle
-from sklearn.linear_model import SGDClassifier
+#import pickle
+#from sklearn.linear_model import SGDClassifier
 import string
 from nltk.tokenize import WhitespaceTokenizer
 from sklearn.metrics.classification import classification_report, accuracy_score
-from sklearn.naive_bayes import MultinomialNB
+
 
 
 # load the csv files 
@@ -54,7 +50,16 @@ for index, row in enumerate(Y):
 del index
 del row      
 
+#print (list(Y) )
+
+
+
+
 # convert data df into list of strings striping the leading and trailing spaces
+#
+#data = u'naïve café'
+#normal = unicodedata.normalize('NFKD', data).encode('ASCII', 'ignore')
+#print (normal)
 for index, row in df.iterrows():
     X.append((unicodedata.normalize('NFKD', row['text']).encode('utf-8','ignore')).decode('utf-8').strip())
     
@@ -63,6 +68,8 @@ del row
 del df
 del df_lab  
   
+
+
 # importing stop words and using Regex tokenizer to remove punctuations  
 stopWords = set(stopwords.words('english'))
 
@@ -98,8 +105,22 @@ for idx, row in enumerate(X_token):
 del idx
 del row   
 
-vectorizer = CountVectorizer()
 
+
+#>>> from sklearn.feature_extraction.text import CountVectorizer
+#>>> import pandas as pd
+#>>> docs = ['this is some text', '0000th', 'aaa more 0stuff0', 'blahblah923']   
+#>>> vec = CountVectorizer()
+#>>> X = vec.fit_transform(docs)
+#>>> pd.DataFrame(X.toarray(), columns=vec.get_feature_names())
+#   0000th  0stuff0  aaa  blahblah923  is  more  some  text  this
+#0       0        0    0            0   1     0     1     1     1
+#1       1        0    0            0   0     0     0     0     0
+#2       0        1    1            0   0     1     0     0     0
+#3       0        0    0            1   0     0     0     0     0
+
+
+vectorizer = CountVectorizer()
 X_bagOfWords = vectorizer.fit_transform(X_token)
 
 X_train, X_test, y_train, y_test = train_test_split(X_bagOfWords, Y, test_size=0.25, random_state=0)
